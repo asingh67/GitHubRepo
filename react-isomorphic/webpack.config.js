@@ -15,7 +15,7 @@ const loaders = [{
 },
 {
   test: /\.less$/,
-  loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
+  loader: ExtractTextPlugin.extract({fallback:'style-loader', use:'css-loader!less-loader'})
 }
 ];
 
