@@ -4,9 +4,12 @@ import handlebars from 'express-handlebars';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import App from './generated/app';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 
+var port = process.env.PORT || 3000;
 // View templates
 app.engine('handlebars', handlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -21,4 +24,8 @@ app.get('/', (request, response) => {
   });
 });
 
-app.listen(3000, () => console.log('Server running on Port 3000'));
+
+app.listen(port, () => {
+  console.log('Server running on Port ' + port);
+  
+});
